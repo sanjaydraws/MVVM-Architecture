@@ -1,0 +1,72 @@
+
+MVVM
+
+
+viewmodelscope
+livedata
+mutablelivedata
+
+
+
+what are lifecycle-aware-components
+
+
+How does it work
+
+
+
+what are lifecycleowner &
+LifecycleOwner(can call any Activity/Fragment)
+
+Activity Has Lifecycle when comes to archietecture component we have
+Lifecycle class (Which uses Event and State to determine the Lifecycle of LifeCyleOwner)
+Eache event has own state, EACH EVENT IS TO PAarticular state
+  onCreate()  ->CREATED
+  onStart()-> STARTED
+  onPause()->  PAUSED
+  onResume() -> RESUMED
+  onDestroy()-> DESTROYED
+  onStop()-> STOPPED
+
+Lifecycle class - holds info about lifecycle of LifecycleOwner
+lifecycle object uses following enumeration to track lifecycle status
+
+LIFECYCLEOWNER -> provide lifecycle status to lifecycl-aware-components
+lifecycleObserver -> it register lifecycle status to respond and perform action
+
+LifecycleObserver -> which observes this activity,and keep track of it's lifecycle
+LifecycleObserver perform action and action performed by this lifecycleObserver
+depends on the lifecycle of lifecycle owner
+
+
+Handling Lifecycles with Lifecycle-Aware Components
+it perform action in when change the lifecycle status of component such as activities and fragments
+Lifecycles are managed by the operating system or the framework code running in your process.
+
+
+activity and observer
+ D/MAInACT: onCreate: OWNER
+ D/MAInACT: onCreate: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
+ D/MAInACT: onStart: Owner
+ D/MAInACT: onStart: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
+ D/MAInACT: onResume: Owner
+ D/MAInACT: onResume: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
+
+
+
+when lock app , when app is visible , goes in background
+D/MAInACT: onPause: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
+D/MAInACT: onPause: Owner
+D/MAInACT: onStop: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
+D/MAInACT: onStop: Owner
+
+when open lock app ,
+D/MAInACT: onStart: Owner
+D/MAInACT: onStart: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
+D/MAInACT: onResume: Owner
+D/MAInACT: onResume: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
+
+when kill app
+onDestroy: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
+D/MAInACT: onDestroy: Owner
+
