@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         const val TAG = "MAInACT"
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
