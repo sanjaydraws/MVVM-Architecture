@@ -6,10 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.sanjayprajapat.mvvmarchitecture.databinding.ActivityMainBinding
 import com.sanjayprajapat.mvvmarchitecture.ui.MainActivityObserver
 import com.sanjayprajapat.mvvmarchitecture.ui.MainViewModel
+import com.sanjayprajapat.mvvmarchitecture.ui.mediator.MediatorLiveDataActivity
+import com.sanjayprajapat.mvvmarchitecture.ui.coroutines_in_viewmodel.CoroutinesInViewModelActivity
+
 
 class MainActivity : AppCompatActivity() {
     var binding:ActivityMainBinding? = null
@@ -27,15 +29,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         lifecycle?.addObserver(MainActivityObserver()) // add observer
+//        mViewModel.getUserData()
+
         Log.d(TAG, "onCreate: OWNER")
-        binding?.txtClick?.setOnClickListener {
-            mViewModel.getUserData()
-        }
 
         mViewModel.userData?.observe(this, Observer {
             it?:return@Observer
             Log.d(TAG, "onCreate: $it")
         })
+
+
+        binding?.txtCoroutinesInViewModel?.setOnClickListener {
+            CoroutinesInViewModelActivity.start(this)
+        }
+        binding?.mediatorLiveData?.setOnClickListener {
+            MediatorLiveDataActivity.start(this)
+        }
     }
 
     override fun onStart() {

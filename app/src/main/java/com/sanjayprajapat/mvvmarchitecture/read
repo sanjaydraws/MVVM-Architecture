@@ -6,6 +6,14 @@ viewmodelscope
 livedata
 mutablelivedata
 
+mediator live dATA ->
+When we're in a ViewModel, we don't want to observeLiveData instances
+(and we can't because we have no LifecycleOwner around). However, we might want to
+react to them, or even combine (and mediate) multiple LiveData objects. For those
+situations, MediatorLiveData is what we're looking for.
+
+While the MediatorLiveData is a subclass of LiveData, it acts as LiveData itself.
+It allows us to merge multiple LiveData sources into one single LiveData which we then can observe.
 
 
 what are lifecycle-aware-components
@@ -70,3 +78,46 @@ when kill app
 onDestroy: OBSERVER androidx.lifecycle.LifecycleRegistry@9bfa842
 D/MAInACT: onDestroy: Owner
 
+
+viewmodelscope -> A ViewModelScope is defined for each ViewModel in your app.
+Any coroutine launched in this scope is automatically canceled if the ViewModel is cleared
+Coroutines are useful here for when you have work that needs to be done only if the ViewModel is active.
+
+
+ViewModels (VMs)-> are independent of configuration changes and are cleared when activity/fragment is destroyed(onCleared call)
+
+
+
+
+
+
+======================================================
+Activity lifecycle
+Activity created  -> onCreate(), onStart(), onResume()
+
+ActivityRotated -> onPause(), onStop(), onDestroy(),
+                   onCreate(), onStart(), onResume()
+
+finish() -> onPause(),onStop(),onDestroy ,OnCleared() of view model
+
+
+=====================================================
+Dispatchers->Dispatchers help coroutines in deciding the thread on which the work has to be done.
+Dispatchers.Main - for change ui on  ui/main thres
+Dispatchers.IO -> networking, reading, or writing from the database, reading, or writing to the files eg: Fetching data from the database is an IO operation, which is done on the IO thread.
+Dispatchers.Default -> when want to do complex and long running task which will freeze ui
+Dispatchers.Unconfined
+
+
+coroutine starts in specific context, this context describes which thread
+coroutine will be started. can be start coroutine using GlobalScope withous passing  any parameters
+
+
+GlobalScope() ->A global CoroutineScope not bound to any job.
+ Global scope is used to launch top-level coroutines which are operating
+  on the whole application lifetime and are not cancelled prematurely.
+
+
+
+GlobalScope - biggest problem with globalscope
+GlobalScope is that the coroutine can very easily be leaked. So when you think GlobalScope, don’t think blocking main thread bad
