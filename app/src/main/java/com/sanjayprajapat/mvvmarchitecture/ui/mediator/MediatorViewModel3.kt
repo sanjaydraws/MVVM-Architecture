@@ -12,4 +12,7 @@ class MediatorViewModel3:ViewModel() {
     val liveDataTwo: LiveData<Int> = _liveDataTwo
 
     val pairMediatorLiveData = PairMediatorLiveData(_liveDataOne, _liveDataTwo)
+
+
+
 }

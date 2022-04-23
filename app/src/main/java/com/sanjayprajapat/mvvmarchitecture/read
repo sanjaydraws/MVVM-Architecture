@@ -16,6 +16,8 @@ While the MediatorLiveData is a subclass of LiveData, it acts as LiveData itself
 It allows us to merge multiple LiveData sources into one single LiveData which we then can observe.
 
 
+Transformation SwitchMap:-> transform all the values of the triple into one single LiveData source
+
 what are lifecycle-aware-components
 
 

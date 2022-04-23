@@ -13,6 +13,7 @@ class MediatorLiveDataActivity : AppCompatActivity() {
     val mViewModel by viewModels<MediatorViewModel>()
     val mViewModel2 by viewModels<MediatorViewModel2>()
     val mViewModel3 by viewModels<MediatorViewModel3>()
+    val mViewModel4 by viewModels<MediatorViewModel4>()
 
     companion object{
         @JvmStatic
@@ -43,6 +44,16 @@ class MediatorLiveDataActivity : AppCompatActivity() {
             it?:return@Observer
             Log.d("pairMediatorLiveData", "onCreate: ${it.first} ${it.second}")
 
+        })
+        mViewModel4.tripleMediatorLiveData.observe(this, Observer {
+            it?:return@Observer
+            Log.d("tripleMediatorLiveData", "onCreate: ${it.first} ${it.second} ${it.third} ")
+
+        })
+        mViewModel4.changeLiveDataTwo()
+
+        mViewModel4.switchLiveData.observe(this, Observer {
+            Log.d("switchLiveData", "onCreate: ${it}")
         })
     }
 }
