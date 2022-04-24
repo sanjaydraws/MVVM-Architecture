@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMArchitecture">
         <activity
+            android:name=".ui.observable_comparison.ObservableComparisonActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.mediator.MediatorLiveDataActivity"
             android:exported="false" />
         <activity

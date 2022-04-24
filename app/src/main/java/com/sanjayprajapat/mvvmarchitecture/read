@@ -123,3 +123,16 @@ GlobalScope() ->A global CoroutineScope not bound to any job.
 
 GlobalScope - biggest problem with globalscope
 GlobalScope is that the coroutine can very easily be leaked. So when you think GlobalScope, don’t think blocking main thread bad
+
+
+
+
+Observable Comparison ->
+
+
+
+LiveData ->
+Flow -> normal flow doesn't contains state (when rotate activity data goes on previous state)
+StateFlow -> it holds to  the state
+SharedFlow ->
+
