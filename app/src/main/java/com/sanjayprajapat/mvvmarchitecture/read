@@ -132,7 +132,28 @@ Observable Comparison ->
 
 
 LiveData ->
-Flow -> normal flow doesn't contains state (when rotate activity data goes on previous state)
 StateFlow -> it holds to  the state
-SharedFlow ->
+StateFlow can do little bit more ,with stateflow we have powerfull operator
+can map the result ,filter them  it uses coroutine , testing capabilities are great with coroutine
+stateFlow is HotFlows
+example -> if show toast on collect, if again triggered stateFlow , if value is same ,it will not emit same value again, toast will not be shown
+if rotate activity, it will automatically emit value  if activity recreated
+ that's why  sharedFlow used(send one time data that doesn't remitted) on screen rotation
+
+
+
+HotFlows -> keep emiting values even there are no collectors
+coldflows -> it would not anything ,even if there are not collectors
+
+Flow ->it doesn't hold values, normal flow doesn't contains state (when rotate activity data goes on previous state)
+to emit value multiple period of time
+
+SharedFlow ->  doesn't provide initial value
+-> also Hotflow
+-> they will send event or data even if there are no collectors
+-> more used to send one time event
+
+
+
+
 

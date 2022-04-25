@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
 import com.sanjayprajapat.mvvmarchitecture.R
 import com.sanjayprajapat.mvvmarchitecture.databinding.ActivityObservableComparisonBinding
 import com.sanjayprajapat.mvvmarchitecture.ui.mediator.MediatorLiveDataActivity
@@ -56,17 +57,26 @@ class ObservableComparisonActivity : AppCompatActivity() {
             mViewModel.triggeredSharedFlow()
         }
         mViewModel.liveData.observe(this){
-            Log.d(TAG, "onCreate: $it")
+            Log.d(TAG, "onCreate: liveData  $it")
             binding?.txtLiveDataValue?.text = it
         }
 
         lifecycleScope.launchWhenStarted {
             mViewModel.stateFlow.collectLatest {
-                Log.d(TAG, "onCreate: $it")
+                Log.d(TAG, "onCreate: stateFlow $it")
                 binding?.txtStateFlowValue?.text = it
+                binding?.root?.let { it1 ->
+                    Snackbar.make(it1,it,Snackbar.LENGTH_LONG) }?.show()
+
             }
         }
-
-
+        lifecycleScope.launchWhenStarted {
+            mViewModel.sharedFlow.collectLatest {
+                binding?.txtSharedFlowValue?.text = it
+                binding?.root?.let {
+                        it1 -> Snackbar.make(it1,it,Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 }
