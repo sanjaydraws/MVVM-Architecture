@@ -16,7 +16,12 @@ While the MediatorLiveData is a subclass of LiveData, it acts as LiveData itself
 It allows us to merge multiple LiveData sources into one single LiveData which we then can observe.
 
 
-Transformation SwitchMap:-> transform all the values of the triple into one single LiveData source
+Transformation:This class provides three static methods: map, switchMap and distinctUntilChanged
+map : Transforms the value of LiveDatainto another value
+SwitchMap:-> transform all the values of the triple into one single LiveData source
+distinctUntilChanged -> Filters LiveData so that values will not be emitted unless they have changed
+ex: . If we’re listening for the names of all players, we don’t want to update the UI when the score changes.
+
 
 what are lifecycle-aware-components
 
@@ -132,9 +137,11 @@ Observable Comparison ->
 
 
 LiveData ->
-StateFlow -> it holds to  the state
-StateFlow can do little bit more ,with stateflow we have powerfull operator
+StateFlow -> it holds to  the state, set a inititial value can'not be null
+StateFlow can do little bit more ,with stateflow we have powerfull operator(live data can't)
 can map the result ,filter them  it uses coroutine , testing capabilities are great with coroutine
+can be transform the result before observing
+stateflow will remain active in background , stateFlow will inactive in background
 stateFlow is HotFlows
 example -> if show toast on collect, if again triggered stateFlow , if value is same ,it will not emit same value again, toast will not be shown
 if rotate activity, it will automatically emit value  if activity recreated
@@ -152,6 +159,7 @@ SharedFlow ->  doesn't provide initial value
 -> also Hotflow
 -> they will send event or data even if there are no collectors
 -> more used to send one time event
+
 
 
 

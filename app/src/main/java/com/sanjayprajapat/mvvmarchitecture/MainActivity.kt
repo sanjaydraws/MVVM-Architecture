@@ -11,6 +11,7 @@ import com.sanjayprajapat.mvvmarchitecture.ui.MainActivityObserver
 import com.sanjayprajapat.mvvmarchitecture.ui.MainViewModel
 import com.sanjayprajapat.mvvmarchitecture.ui.mediator.MediatorLiveDataActivity
 import com.sanjayprajapat.mvvmarchitecture.ui.coroutines_in_viewmodel.CoroutinesInViewModelActivity
+import com.sanjayprajapat.mvvmarchitecture.ui.livedata_.LIveDataExampleActivity
 import com.sanjayprajapat.mvvmarchitecture.ui.observable_comparison.ObservableComparisonActivity
 
 
@@ -48,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding?.observableComparison?.setOnClickListener {
             ObservableComparisonActivity.start(this)
+        }
+        binding?.txtLiveData?.setOnClickListener {
+            LIveDataExampleActivity.start(this)
         }
     }
 

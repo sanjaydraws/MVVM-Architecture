@@ -49,6 +49,7 @@ class ObservableComparisonActivity : AppCompatActivity() {
            lifecycleScope.launch {
                mViewModel.triggeredFlow().collectLatest {
                    binding?.txtFlowValue?.text = it
+                   Log.d(TAG, "onCreate: triggeredFlow  $it")
                }
            }
         }
@@ -73,6 +74,7 @@ class ObservableComparisonActivity : AppCompatActivity() {
         lifecycleScope.launchWhenStarted {
             mViewModel.sharedFlow.collectLatest {
                 binding?.txtSharedFlowValue?.text = it
+                Log.d(TAG, "onCreate: sharedFlow $it")
                 binding?.root?.let {
                         it1 -> Snackbar.make(it1,it,Snackbar.LENGTH_LONG).show()
                 }
