@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMArchitecture">
         <activity
+            android:name=".ui.flows.FlowActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.livedata_.LIveDataExampleActivity"
             android:exported="false" />
         <activity

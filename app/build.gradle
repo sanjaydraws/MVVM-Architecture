@@ -71,7 +71,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
 
     // to use coroutine
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
 
     // Coroutine Lifecycle Scopes
@@ -82,7 +82,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.4.1")
 
 //    KTX extensions that work directly with coroutines
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-alpha06")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0-beta01")
 
 
 
